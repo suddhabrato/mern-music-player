@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SongsList from "./SongsList";
 
 const Home = () => {
@@ -21,9 +22,12 @@ const Home = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-accent rounded-full btn-outline px-6">
+            <Link
+              to="/upload"
+              className="btn btn-accent rounded-full btn-outline px-6"
+            >
               Upload New Song
-            </button>
+            </Link>
           </div>
         </div>
       </div>

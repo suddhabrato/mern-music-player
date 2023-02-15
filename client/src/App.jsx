@@ -7,10 +7,10 @@ import Player from "./Components/Player";
 
 const App = () => {
   return (
-    <div>
+    <div className="h-[100dvh]">
       <BrowserRouter>
         <Navbar />
-        <div className="main-content -mt-16 mb-16">
+        <div className="main-content -mt-16 -mb-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/upload" element={<UploadSongForm />} />
