@@ -14,6 +14,10 @@ app.use(json());
 
 app.use("/api/v1/", songRouter);
 
+app.options("*", (req, res) => {
+  res.status(200).send();
+});
+
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
