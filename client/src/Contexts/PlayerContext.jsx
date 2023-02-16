@@ -12,6 +12,10 @@ export const PlayerContextProvider = ({ children }) => {
   const audioElem = useRef();
 
   useEffect(() => {
+    setDefaultSong();
+  }, []);
+
+  useEffect(() => {
     if (audioElem.current) {
       if (playing) audioElem.current.play();
       else audioElem.current.pause();
@@ -21,6 +25,13 @@ export const PlayerContextProvider = ({ children }) => {
   useEffect(() => {
     if (audioElem.current) audioElem.current.volume = volume;
   }, [volume]);
+
+  const setDefaultSong = async () => {
+    const song = await getSong("63edc0c77c63206c7df66438");
+    song.currTime = 0.0;
+    song.duration = 483;
+    setCurrSong(song);
+  };
 
   const getAllSongs = async () => {
     try {

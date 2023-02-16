@@ -105,7 +105,7 @@ const Player = () => {
             <h1 className="text-md font-medium">{currSong.name}</h1>
             <p className="text-sm">{currSong.artist}</p>
           </div>
-          <div className="hidden lg:flex lg:flex-col items-end mb-2">
+          <div className="hidden lg:flex lg:flex-col items-center gap-1.5 mb-2">
             <div className="flex justify-between w-full px-1">
               <time className="text-xs">
                 {(Math.floor((currSong.currTime / 60) * 100) / 100)
