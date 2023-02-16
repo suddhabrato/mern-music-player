@@ -7,7 +7,8 @@ export const PlayerContextProvider = ({ children }) => {
   const [currSong, setCurrSong] = useState();
   const [playing, setPlaying] = useState(false);
   const [songs, setSongs] = useState();
-
+  const [volume, setVolume] = useState(0.67);
+  const [isMute, setMute] = useState(false);
   const audioElem = useRef();
 
   useEffect(() => {
@@ -16,6 +17,10 @@ export const PlayerContextProvider = ({ children }) => {
       else audioElem.current.pause();
     }
   }, [playing]);
+
+  useEffect(() => {
+    if (audioElem.current) audioElem.current.volume = volume;
+  }, [volume]);
 
   const getAllSongs = async () => {
     try {
@@ -72,6 +77,16 @@ export const PlayerContextProvider = ({ children }) => {
     setSongInPlayer(songs.at((index + 1) % songs.length)._id);
   };
 
+  const changeVolume = (evt) => {
+    if (isMute && evt.target.value > 0) toggleMute();
+    setVolume(evt.target.value);
+  };
+
+  const toggleMute = () => {
+    audioElem.current.volume = isMute ? volume : 0;
+    setMute(!isMute);
+  };
+
   return (
     <PlayerContext.Provider
       value={{
@@ -84,6 +99,10 @@ export const PlayerContextProvider = ({ children }) => {
         getAllSongs,
         getPrevTrack,
         getNextTrack,
+        volume,
+        changeVolume,
+        isMute,
+        toggleMute,
       }}
     >
       {children}
