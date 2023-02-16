@@ -113,7 +113,7 @@ const Player = () => {
               <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
           </div>
-          <div className="flex flex-col gap-0.5 justify-center">
+          <div className="flex flex-col gap-0.5 lg:gap-1 justify-center">
             <h1 className="font-medium leading-none">{currSong.name}</h1>
             <p className="text-sm leading-none">{currSong.artist}</p>
           </div>

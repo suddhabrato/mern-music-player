@@ -17,7 +17,7 @@ const SongCard = ({ name, artist, id }) => {
         <p>{artist}</p>
         <div className="card-actions justify-end">
           <button
-            className="btn btn-primary"
+            className="btn btn-primary rounded-full"
             onClick={() => setSongInPlayer(id)}
           >
             Play Now

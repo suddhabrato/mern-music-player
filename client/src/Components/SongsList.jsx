@@ -11,7 +11,7 @@ const SongsList = () => {
   }, []);
 
   return (
-    <div className="mt-16 p-8 flex justify-center flex-wrap gap-10">
+    <div className="my-16 p-8 flex justify-center flex-wrap gap-10">
       {songs ? (
         songs.map((song) => (
           <SongCard

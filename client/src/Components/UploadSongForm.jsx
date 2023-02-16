@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
-import Loader from "./Loader";
 import { usePlayerContext } from "../Contexts/PlayerContext";
 
 const UploadSongForm = () => {
@@ -132,13 +131,14 @@ const UploadSongForm = () => {
                     />
                   </div>
                   <div className="form-control mt-6 items-center justify-center">
-                    {isSubmitting ? (
-                      <Loader />
-                    ) : (
-                      <button type="submit" className="btn btn-primary w-full">
-                        Add Song
-                      </button>
-                    )}
+                    <button
+                      type="submit"
+                      className={`btn btn-primary ${
+                        isSubmitting && "loading"
+                      } w-full`}
+                    >
+                      {!isSubmitting && "Add Song"}
+                    </button>
                   </div>
                 </Form>
               )}
