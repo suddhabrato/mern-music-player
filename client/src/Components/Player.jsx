@@ -20,7 +20,7 @@ const Player = () => {
   };
 
   return (
-    <div className="flex items-center h-16 p-2 w-full justify-center bg-base-100 sticky bottom-0 bg-opacity-60 backdrop-blur z-50">
+    <div className="flex items-center h-16 p-2 w-full justify-center bg-base-100 fixed bottom-0 bg-opacity-60 backdrop-blur z-50">
       <div className="flex mx-2">
         <button className="btn btn-ghost btn-circle" onClick={getPrevTrack}>
           <svg
@@ -121,7 +121,7 @@ const Player = () => {
             <input
               type="range"
               min={0}
-              max={currSong.duration}
+              max={currSong.duration || 0}
               value={getProgress()}
               step={0.01}
               onChange={seekPlayer}

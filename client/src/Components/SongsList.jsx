@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { usePlayerContext } from "../Contexts/PlayerContext";
+import Loader from "./Loader";
 import SongCard from "./SongCard";
 
 const SongsList = () => {
@@ -10,18 +11,20 @@ const SongsList = () => {
   }, []);
 
   return (
-    songs && (
-      <div className="mt-16 p-8 flex justify-center flex-wrap gap-10">
-        {songs.map((song) => (
+    <div className="mt-16 p-8 flex justify-center flex-wrap gap-10">
+      {songs ? (
+        songs.map((song) => (
           <SongCard
             key={song._id}
             id={song._id}
             name={song.name}
             artist={song.artist}
           />
-        ))}
-      </div>
-    )
+        ))
+      ) : (
+        <Loader />
+      )}
+    </div>
   );
 };
 

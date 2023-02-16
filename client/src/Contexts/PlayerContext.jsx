@@ -111,6 +111,7 @@ export const PlayerContextProvider = ({ children }) => {
           src={currSong.audio_url}
           ref={audioElem}
           onTimeUpdate={whilePlaying}
+          onEnded={getNextTrack}
         />
       )}
     </PlayerContext.Provider>
