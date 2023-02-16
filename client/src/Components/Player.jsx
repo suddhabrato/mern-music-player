@@ -20,9 +20,12 @@ const Player = () => {
   };
 
   return (
-    <div className="flex items-center h-16 p-2 w-full justify-center bg-base-100 fixed bottom-0 bg-opacity-60 backdrop-blur z-50">
-      <div className="flex mx-2">
-        <button className="btn btn-ghost btn-circle" onClick={getPrevTrack}>
+    <div className="flex items-center mx-2 h-16 py-2 w-full justify-center bg-base-100 fixed bottom-0 bg-opacity-60 backdrop-blur z-50">
+      <div className="flex mx-4">
+        <button
+          className="btn btn-ghost btn-sm lg:btn-md btn-circle"
+          onClick={getPrevTrack}
+        >
           <svg
             className="h-5 w-5 -scale-x-100"
             fill="none"
@@ -40,7 +43,10 @@ const Player = () => {
           </svg>
         </button>
         {playing ? (
-          <button className="btn btn-ghost btn-circle" onClick={togglePlaying}>
+          <button
+            className="btn btn-ghost btn-sm lg:btn-md btn-circle"
+            onClick={togglePlaying}
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -58,7 +64,10 @@ const Player = () => {
             </svg>
           </button>
         ) : (
-          <button className="btn btn-ghost btn-circle" onClick={togglePlaying}>
+          <button
+            className="btn btn-ghost btn-sm lg:btn-md btn-circle"
+            onClick={togglePlaying}
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -76,7 +85,10 @@ const Player = () => {
             </svg>
           </button>
         )}
-        <button className="btn btn-ghost btn-circle" onClick={getNextTrack}>
+        <button
+          className="btn btn-ghost btn-sm lg:btn-md btn-circle"
+          onClick={getNextTrack}
+        >
           <svg
             className="h-5 w-5"
             fill="none"
@@ -101,21 +113,27 @@ const Player = () => {
               <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
           </div>
-          <div className="flex flex-col gap-0">
-            <h1 className="text-md font-medium">{currSong.name}</h1>
-            <p className="text-sm">{currSong.artist}</p>
+          <div className="flex flex-col gap-0.5 justify-center">
+            <h1 className="font-medium leading-none">{currSong.name}</h1>
+            <p className="text-sm leading-none">{currSong.artist}</p>
           </div>
           <div className="hidden lg:flex lg:flex-col items-center gap-1.5 mb-2">
             <div className="flex justify-between w-full px-1">
               <time className="text-xs">
-                {(Math.floor((currSong.currTime / 60) * 100) / 100)
-                  .toString()
-                  .replace(".", ":")}
+                {`${Math.floor(Math.floor(currSong.currTime) / 60)}:${(
+                  Math.floor(currSong.currTime) % 60
+                ).toLocaleString("en-US", {
+                  minimumIntegerDigits: 2,
+                  useGrouping: false,
+                })}`}
               </time>
               <time className="text-xs">
-                {(Math.floor((currSong.duration / 60) * 100) / 100)
-                  .toString()
-                  .replace(".", ":")}
+                {`${Math.floor(Math.floor(currSong.duration) / 60)}:${(
+                  Math.floor(currSong.duration) % 60
+                ).toLocaleString("en-US", {
+                  minimumIntegerDigits: 2,
+                  useGrouping: false,
+                })}`}
               </time>
             </div>
             <input
@@ -128,7 +146,7 @@ const Player = () => {
               className="range range-xs w-96"
             />
           </div>
-          <div className="hidden lg:flex items-center gap-2 flex-row justify-around mx-4">
+          <div className="flex items-center lg:gap-2 justify-around -ml-2 mr-4">
             <button className="btn btn-ghost btn-circle" onClick={toggleMute}>
               {!isMute ? (
                 <svg
