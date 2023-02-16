@@ -1,6 +1,8 @@
 import React from "react";
+import { usePlayerContext } from "../Contexts/PlayerContext";
 
 const SongCard = ({ name, artist, id }) => {
+  const { setSongInPlayer } = usePlayerContext();
   return (
     <div className="card w-96 max-h-48 bg-base-100 shadow-xl image-full">
       <figure>
@@ -14,7 +16,12 @@ const SongCard = ({ name, artist, id }) => {
         <h2 className="card-title">{name}</h2>
         <p>{artist}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Play Now</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => setSongInPlayer(id)}
+          >
+            Play Now
+          </button>
         </div>
       </div>
     </div>
